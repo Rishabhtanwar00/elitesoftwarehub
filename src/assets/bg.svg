@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 1200 800">
+  <!-- HTML5 -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" width="60" height="60" x="100" y="50"/>
+  
+  <!-- CSS3 -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/d/d5/CSS3_logo_and_wordmark.svg" width="60" height="60" x="300" y="150"/>
+
+  <!-- JavaScript -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" width="60" height="60" x="500" y="250"/>
+
+  <!-- React -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" width="60" height="60" x="700" y="100"/>
+
+  <!-- Node.js -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="60" height="60" x="900" y="300"/>
+
+  <!-- Git -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/3/3f/Git_icon.svg" width="60" height="60" x="200" y="400"/>
+
+  <!-- Webpack -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" width="60" height="60" x="400" y="500"/>
+
+  <!-- Angular -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/c/cf/Angular_full_color_logo.svg" width="60" height="60" x="600" y="350"/>
+
+  <!-- Vue.js -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/9/95/Vue.js_Logo_2.svg" width="60" height="60" x="800" y="600"/>
+
+  <!-- NPM -->
+  <image href="https://upload.wikimedia.org/wikipedia/commons/d/db/Npm-logo.svg" width="60" height="60" x="1000" y="400"/>
+</svg>
