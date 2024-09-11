@@ -10,18 +10,36 @@ import Img6 from '../assets/support.png';
 import Circles from '../assets/circles.svg';
 import FeaturesImg from '../assets/featuresimg.png';
 import { FaQuoteLeft } from 'react-icons/fa';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Homepage = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+	const intervalRef = useRef(null); // Use useRef to store the interval ID
+
+	// Function to start the interval
+	const startInterval = () => {
+		intervalRef.current = setInterval(() => {
+			setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
+		}, 5000); // 5 seconds interval
+	};
+
+	// Function to reset the interval
+	const resetInterval = () => {
+		clearInterval(intervalRef.current); // Clear the existing interval
+		startInterval(); // Start a new interval
+	};
+
+	// Handle dot click
+	const handleDotClick = (index) => {
+		setCurrentIndex(index); // Set the current slide
+		resetInterval(); // Reset the interval
+	};
 
 	useEffect(() => {
-		const interval = setInterval(() => {
-			setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
-		}, 5000);
+		startInterval(); // Start the interval when the component mounts
 
 		return () => {
-			clearInterval(interval);
+			clearInterval(intervalRef.current); // Clear the interval on component unmount
 		};
 	}, []);
 
@@ -235,8 +253,22 @@ const Homepage = () => {
 						</div>
 					</div>
 				</div>
+				<div className='dots-container flex'>
+					<span
+						className={`dot ${currentIndex === 0 ? 'active' : ''}`}
+						onClick={() => handleDotClick(0)}
+					></span>
+					<span
+						className={`dot ${currentIndex === 1 ? 'active' : ''}`}
+						onClick={() => handleDotClick(1)}
+					></span>
+					<span
+						className={`dot ${currentIndex === 2 ? 'active' : ''}`}
+						onClick={() => handleDotClick(2)}
+					></span>
+				</div>
 			</section>
-			<section className="home-contact flex-col">
+			<section className='home-contact flex-col'>
 				<h1>Ready to Elevate Your Web Presence?</h1>
 				<CustomButton title='Contact Us' />
 			</section>
