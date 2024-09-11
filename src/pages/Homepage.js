@@ -8,8 +8,23 @@ import Img4 from '../assets/wireframe.png';
 import Img5 from '../assets/database.png';
 import Img6 from '../assets/support.png';
 import Circles from '../assets/circles.svg';
+import FeaturesImg from '../assets/featuresimg.png';
+import { FaQuoteLeft } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
 
 const Homepage = () => {
+	const [currentIndex, setCurrentIndex] = useState(0);
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			setCurrentIndex((prevIndex) => (prevIndex === 2 ? 0 : prevIndex + 1));
+		}, 5000);
+
+		return () => {
+			clearInterval(interval);
+		};
+	}, []);
+
 	return (
 		<section>
 			<section className='hero-section flex-col'>
@@ -50,11 +65,11 @@ const Homepage = () => {
 					</div>
 				</section>
 				<div className='home-services'>
-					<div className='services'>
+					<div className='home-services-content'>
 						<Heading title='Comprehensive Web Development Solutions' big />
-						<div className='service-cards'>
-							<div className='card'>
-								<div className='icon'>
+						<div className='home-service-cards'>
+							<div className='home-service-card'>
+								<div className='home-service-icon'>
 									<img src={Img1} alt='Custom Website Design Icon' />
 								</div>
 								<h3>Custom Website Design & Development</h3>
@@ -65,8 +80,8 @@ const Homepage = () => {
 								<img className='circle-svg' src={Circles} alt='Circle icon' />
 							</div>
 
-							<div className='card'>
-								<div className='icon'>
+							<div className='home-service-card'>
+								<div className='home-service-icon'>
 									<img src={Img2} alt='E-Commerce Development Icon' />
 								</div>
 								<h3>E-Commerce Development</h3>
@@ -77,8 +92,8 @@ const Homepage = () => {
 								<img className='circle-svg' src={Circles} alt='Circle icon' />
 							</div>
 
-							<div className='card'>
-								<div className='icon'>
+							<div className='home-service-card'>
+								<div className='home-service-icon'>
 									<img src={Img3} alt='Web Application Development Icon' />
 								</div>
 								<h3>Web Application Development</h3>
@@ -89,8 +104,8 @@ const Homepage = () => {
 								<img className='circle-svg' src={Circles} alt='Circle icon' />
 							</div>
 
-							<div className='card'>
-								<div className='icon'>
+							<div className='home-service-card'>
+								<div className='home-service-icon'>
 									<img src={Img4} alt='UI/UX Design Icon' />
 								</div>
 								<h3>UI/UX Design</h3>
@@ -101,8 +116,8 @@ const Homepage = () => {
 								<img className='circle-svg' src={Circles} alt='Circle icon' />
 							</div>
 
-							<div className='card'>
-								<div className='icon'>
+							<div className='home-service-card'>
+								<div className='home-service-icon'>
 									<img src={Img5} alt='API & Backend Development Icon' />
 								</div>
 								<h3>API & Backend Development</h3>
@@ -113,8 +128,8 @@ const Homepage = () => {
 								<img className='circle-svg' src={Circles} alt='Circle icon' />
 							</div>
 
-							<div className='card'>
-								<div className='icon'>
+							<div className='home-service-card'>
+								<div className='home-service-icon'>
 									<img src={Img6} alt='Website Maintenance Icon' />
 								</div>
 								<h3>Website Maintenance & Support</h3>
@@ -130,6 +145,100 @@ const Homepage = () => {
 			</section>
 			<section className='home-features'>
 				<Heading title='Why Partner with EliteSoftwarehub' big />
+				<div className='home-features-content flex'>
+					<div className='home-features-left flex-col'>
+						<div className='home-feature'>
+							<h1>Expertise & Innovation</h1>
+							<p>
+								Our team stays up-to-date with the latest technologies and
+								trends to deliver cutting-edge solutions.
+							</p>
+						</div>
+						<div className='home-feature'>
+							<h1>Client-Centric Approach</h1>
+							<p>
+								Your success is our success. We tailor our services to meet your
+								unique needs and objectives.
+							</p>
+						</div>
+					</div>
+					<div className='home-features-img'>
+						<img src={FeaturesImg} alt='Why choose us img' />
+					</div>
+					<div className='home-features-right flex-col'>
+						<div className='home-feature'>
+							<h1>Scalability & Performance</h1>
+							<p>
+								We build scalable solutions that grow with your business,
+								ensuring high performance even under heavy traffic.
+							</p>
+						</div>
+						<div className='home-feature'>
+							<h1>Proven Track Record</h1>
+							<p>
+								Our portfolio speaks for itself. We've helped numerous
+								businesses transform their digital presence.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section className='home-testimonials-section'>
+				<div
+					className='home-testimonials'
+					style={{ transform: `translateX(-${currentIndex * 100}vw)` }}
+				>
+					<div className='home-testimonial flex'>
+						<div className='quote'>
+							<i>
+								<FaQuoteLeft />
+							</i>
+						</div>
+						<div className='home-testimonial-content'>
+							<h1>
+								EliteSoftwarehub delivered beyond our expectations. Their
+								attention to detail and technical expertise helped us launch a
+								website that truly represents our brand.
+							</h1>
+							<h6>- Kraduae</h6>
+						</div>
+					</div>
+					<div className='home-testimonial flex'>
+						<div className='quote'>
+							<i>
+								<FaQuoteLeft />
+							</i>
+						</div>
+						<div className='home-testimonial-content'>
+							<h1>
+								The team’s professionalism and innovative approach to
+								problem-solving made the entire development process smooth and
+								successful.
+							</h1>
+							<h6>- Twilearn</h6>
+						</div>
+					</div>
+					<div className='home-testimonial flex'>
+						<div className='quote'>
+							<i>
+								<FaQuoteLeft />
+							</i>
+						</div>
+						<div className='home-testimonial-content'>
+							<h1>
+								Working with EliteSoftwarehub was seamless. They delivered a
+								high-quality, responsive website that perfectly fits our needs.
+								Their team is skilled, professional, and easy to work with.
+								Highly recommend!
+							</h1>
+							<h6>- Prime File Advisors</h6>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section className="home-contact flex-col">
+				<h1>Ready to Elevate Your Web Presence?</h1>
+				<CustomButton title='Contact Us' />
 			</section>
 		</section>
 	);
