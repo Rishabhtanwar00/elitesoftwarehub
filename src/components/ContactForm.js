@@ -1,0 +1,89 @@
+import { useForm } from 'react-hook-form';
+
+const ContactForm = () => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm();
+
+	const registerOptions = {
+		email: { required: 'Email is required' },
+		name: { required: 'Full name is required' },
+		message: { required: 'Message is required' },
+	};
+
+	const onSubmit = async (data) => {
+		console.log(data);
+	};
+
+	return (
+		<form onSubmit={handleSubmit(onSubmit)} className='contact-form flex-col'>
+			<div className='input-container flex-col'>
+				<label>Full Name</label>
+				<input
+					className='form-input'
+					name='name'
+					type='text'
+					placeholder='Enter your full name'
+					{...register('name', registerOptions.name)}
+				/>
+				<small className='error'>{errors?.name && errors.name.message}</small>
+			</div>
+			<div className='input-container flex-col'>
+				<label>Email</label>
+				<input
+					className='form-input'
+					type='email'
+					name='email'
+					placeholder='Enter your email'
+					{...register('email', registerOptions.email)}
+				/>
+				<small className='error'>{errors?.email && errors.email.message}</small>
+			</div>
+			<div className='input-container flex-col'>
+				<label>Phone Number</label>
+				<input
+					className='form-input'
+					name='phone'
+					type='text'
+					placeholder='Enter your phone number'
+					{...register('phone', registerOptions.phone)}
+				/>
+			</div>
+			<div className='input-container flex-col'>
+				<label>Service Of Interest</label>
+				<select
+					className='form-input'
+					name='service'
+					{...register('service', registerOptions.service)}
+				>
+					{/* <option value=''>Choose Service Of Interest</option> */}
+					<option value='company_registartion'>Company Registration</option>
+					<option value='website_development'>Website Development</option>
+					<option value='digital_marketing'>Digital Marketing</option>
+					<option value='complete_solution'>Complete Solution</option>
+					<option value='other'>Other</option>
+				</select>
+			</div>
+			<div className='input-container flex-col'>
+				<label>Message</label>
+				<textarea
+					className='form-input'
+					name='message'
+					type='text'
+					placeholder='Enter your message'
+					{...register('message', registerOptions.message)}
+				/>
+				<small className='error'>
+					{errors?.message && errors.message.message}
+				</small>
+			</div>
+			<button className='submit-button' type='submit'>
+				Submit
+			</button>
+		</form>
+	);
+};
+
+export default ContactForm;
