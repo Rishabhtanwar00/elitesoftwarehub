@@ -11,7 +11,7 @@ const Footer = () => {
 				<img src={EliteSoftwarehub} alt='' />
 				<p>
 					Transform your online presence with our all-in-one services, from
-					cutting-edge web design and development.
+					company registartion, cutting-edge web design and digital marketing.
 				</p>
 				<div className='footer-email'>
 					<h2>Let's Talk</h2>
