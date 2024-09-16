@@ -16,7 +16,7 @@ const navlinks = [
 	{
 		id: 3,
 		name: 'Services',
-		to: '/services',
+		to: '/our-services',
 	},
 	{
 		id: 4,
@@ -29,6 +29,7 @@ const Navbar = () => {
 	const [burgerClass, setBurgerClass] = useState('nav-burger');
 	const [menu_class, setMenuClass] = useState('menu hidden');
 	const [isMenuClicked, setIsMenuClicked] = useState(false);
+	const [navbar, setNavbar] = useState(false);
 
 	const updateMenu = () => {
 		if (!isMenuClicked) {
@@ -41,8 +42,14 @@ const Navbar = () => {
 		setIsMenuClicked(!isMenuClicked);
 	};
 
+	const changeBackgroundColor = () => {
+		window.scrollY >= 60 ? setNavbar(true) : setNavbar(false);
+	};
+
+	window.addEventListener('scroll', changeBackgroundColor);
+
 	return (
-		<nav>
+		<nav className={navbar ? 'navbar active' : 'navbar'}>
 			<Link to='/' className='nav-logo flex'>
 				<img draggable='false' src={EliteSoftwarehub} alt='EliteSoftwarehub' />
 			</Link>

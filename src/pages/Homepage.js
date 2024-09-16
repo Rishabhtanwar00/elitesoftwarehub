@@ -50,7 +50,7 @@ const Homepage = () => {
 				</section>
 				<div className='home-services'>
 					<div className='home-services-content'>
-						<Heading title='Comprehensive Web Development Solutions' big />
+						<Heading title='Comprehensive Solutions' big />
 						<div className='home-service-cards'>
 							{ServicesData.map((service) => (
 								<div className='home-service-card' key={service.id}>
