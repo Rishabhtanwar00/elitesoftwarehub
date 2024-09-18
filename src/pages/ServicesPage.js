@@ -1,11 +1,18 @@
 import Img1 from '../assets/companyservice.jpg';
 import Img2 from '../assets/websiteservice.jpg';
 import Img3 from '../assets/marketingservice.png';
+import DocumentTitle from '../components/DocumentTitle';
 import Heading from '../components/Heading';
 import CustomButton from '../components/CustomButton';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const ServicesPage = () => {
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
+	DocumentTitle('Our Services - EliteSoftwarehub');
+
 	const navigate = useNavigate();
 	return (
 		<section>

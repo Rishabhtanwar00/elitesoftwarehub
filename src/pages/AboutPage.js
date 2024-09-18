@@ -8,11 +8,18 @@ import Img7 from '../assets/integrity.png';
 import Img8 from '../assets/collaboration.png';
 import Img9 from '../assets/innovation.png';
 import Img10 from '../assets/satisfaction.png';
+import DocumentTitle from '../components/DocumentTitle';
 import Heading from '../components/Heading';
 import CustomButton from '../components/CustomButton';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const AboutPage = () => {
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
+	DocumentTitle('About us - EliteSoftwarehub');
+
 	const navigate = useNavigate();
 	return (
 		<section>
@@ -47,7 +54,7 @@ const AboutPage = () => {
 						</p>
 					</div>
 				</div>
-			</div>			
+			</div>
 			<div className='about-vision-mission flex-col'>
 				<Heading title='Our Vision & Mission' />
 				<div className='vision-mission-details flex-col'>

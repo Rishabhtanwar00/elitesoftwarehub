@@ -1,15 +1,21 @@
+import HeroImg from '../assets/hero.png';
+import FeaturesImg from '../assets/featuresimg.png';
+import Circles from '../assets/circles.svg';
+import DocumentTitle from '../components/DocumentTitle';
 import CustomButton from '../components/CustomButton';
 import ContactPopup from '../components/ContactPopup';
 import Heading from '../components/Heading';
 import TestimonialSlider from '../components/TestimonialSlider';
 import { ServicesData } from '../components/Data';
-import HeroImg from '../assets/hero.png';
-import FeaturesImg from '../assets/featuresimg.png';
-import Circles from '../assets/circles.svg';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Homepage = () => {
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
+	DocumentTitle('EliteSoftwarehub');
+
 	const [popup, setPopup] = useState(false);
 	const navigate = useNavigate();
 
@@ -63,7 +69,7 @@ const Homepage = () => {
 				</section>
 				<div className='home-services'>
 					<div className='home-services-content'>
-						<Heading title='Comprehensive Solutions' big />
+						<Heading title='Our Solutions' />
 						<div className='home-service-cards'>
 							{ServicesData.map((service) => (
 								<div className='home-service-card' key={service.id}>

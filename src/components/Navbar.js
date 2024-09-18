@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import EliteSoftwarehub from '../assets/elitegen.png';
 
 const navlinks = [
@@ -26,6 +26,7 @@ const navlinks = [
 ];
 
 const Navbar = () => {
+	const { pathname } = useLocation();
 	const [burgerClass, setBurgerClass] = useState('nav-burger');
 	const [menu_class, setMenuClass] = useState('menu hidden');
 	const [isMenuClicked, setIsMenuClicked] = useState(false);
@@ -57,7 +58,9 @@ const Navbar = () => {
 				{navlinks.map((link) => (
 					<Link
 						key={link.id}
-						className='nav-link'
+						className={
+							pathname === `${link.to}` ? 'active nav-link' : 'nav-link'
+						}
 						to={link.to}
 						onClick={updateMenu}
 					>

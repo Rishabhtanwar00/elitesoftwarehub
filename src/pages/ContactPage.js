@@ -1,13 +1,20 @@
-import { Link } from 'react-router-dom';
 import CallImg from '../assets/call.png';
 import EmailImg from '../assets/email.png';
 import FacebookImg from '../assets/facebook.png';
 import InstagramImg from '../assets/instagram.png';
 import TwitterImg from '../assets/twitter.png';
-import ContactForm from '../components/ContactForm';
 import Contactbg from '../assets/contactbg.svg';
+import DocumentTitle from '../components/DocumentTitle';
+import ContactForm from '../components/ContactForm';
+import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const ContactPage = () => {
+	useEffect(() => {
+		window.scroll(0, 0);
+	}, []);
+	DocumentTitle('Contact us - EliteSoftwarehub');
+
 	return (
 		<section>
 			<div className='contact-hero flex'>
