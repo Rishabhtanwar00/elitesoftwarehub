@@ -60,7 +60,7 @@ const ContactPage = () => {
 							needs.
 						</p>
 						<ContactForm />
-          <img src={Contactbg} alt="" className="contact-bg" />
+						<img src={Contactbg} alt='' className='contact-bg' />
 					</div>
 				</div>
 			</div>

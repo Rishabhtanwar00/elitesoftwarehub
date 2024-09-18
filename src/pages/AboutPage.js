@@ -8,11 +8,12 @@ import Img7 from '../assets/integrity.png';
 import Img8 from '../assets/collaboration.png';
 import Img9 from '../assets/innovation.png';
 import Img10 from '../assets/satisfaction.png';
-
 import Heading from '../components/Heading';
 import CustomButton from '../components/CustomButton';
+import { useNavigate } from 'react-router-dom';
 
 const AboutPage = () => {
+	const navigate = useNavigate();
 	return (
 		<section>
 			<div className='about-hero'>
@@ -24,7 +25,12 @@ const AboutPage = () => {
 						<h1>US</h1>
 						<h4>Smooth process and Quality work</h4>
 						<p>
-						At EliteSoftwarehub, we pride ourselves on being a trusted partner for businesses looking to grow, evolve, and thrive in today’s fast-paced digital world. Our comprehensive range of services, from company registration to website development and digital marketing, is designed to give businesses everything they need to succeed under one roof.
+							At EliteSoftwarehub, we pride ourselves on being a trusted partner
+							for businesses looking to grow, evolve, and thrive in today’s
+							fast-paced digital world. Our comprehensive range of services,
+							from company registration to website development and digital
+							marketing, is designed to give businesses everything they need to
+							succeed under one roof.
 						</p>
 					</div>
 					<div className='about-hero-middle'>
@@ -33,11 +39,15 @@ const AboutPage = () => {
 					<div className='about-hero-right'>
 						<img src={Img2} alt='' />
 						<p>
-						With years of experience and a client-first approach, we specialize in simplifying the complexities of starting and scaling a business. Our expert team provides strategic solutions tailored to each business’s unique needs, ensuring that our clients can focus on what matters most-running their business.
+							With years of experience and a client-first approach, we
+							specialize in simplifying the complexities of starting and scaling
+							a business. Our expert team provides strategic solutions tailored
+							to each business’s unique needs, ensuring that our clients can
+							focus on what matters most-running their business.
 						</p>
 					</div>
 				</div>
-			</div>
+			</div>			
 			<div className='about-vision-mission flex-col'>
 				<Heading title='Our Vision & Mission' />
 				<div className='vision-mission-details flex-col'>
@@ -160,15 +170,18 @@ const AboutPage = () => {
 				</div>
 			</div>
 			<section className='home-contact about-contact flex-col'>
-			<h1>Let’s Work Together </h1>
+				<h1>Let’s Work Together </h1>
 				<p>
 					We believe in building lasting partnerships with our clients. Whether
 					you’re just starting your entrepreneurial journey or looking to scale
-					your existing business, EliteSoftwarehub is here to help you every step
-					of the way. Contact us today for a consultation and see how we can
-					transform your business.
+					your existing business, EliteSoftwarehub is here to help you every
+					step of the way. Contact us today for a consultation and see how we
+					can transform your business.
 				</p>
-				<CustomButton title='Contact Us' />
+				<CustomButton
+					title='Contact Us'
+					handleClick={() => navigate('/contact-us')}
+				/>
 			</section>
 		</section>
 	);

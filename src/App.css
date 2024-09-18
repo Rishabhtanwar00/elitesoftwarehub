@@ -72,6 +72,7 @@
 	border-radius: 50%;
 	border: 2.5px solid #f2f2f2;
 	display: none;
+	z-index: 11;
 }
 .nav-burger span {
 	width: 20px;
@@ -200,7 +201,7 @@
 	overflow: hidden;
 	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 }
-.home-services-bg {
+/* .home-services-bg {
 	position: absolute;
 	height: 1500px;
 	width: 1500px;
@@ -209,7 +210,7 @@
 	right: -700px;
 	top: 20px;
 	transform: rotate(45deg);
-}
+} */
 .home-service-cards {
 	display: flex;
 	flex-wrap: wrap;
@@ -623,11 +624,29 @@ footer {
 	height: 120px;
 	resize: none;
 }
+input[type='checkbox'] {
+	width: 20px !important;
+	height: 20px !important;
+	float: left;
+	margin-right: 5px;
+	accent-color: #fd5526;
+}
+input[type='checkbox']:disabled + label {
+	color: red;
+}
+.input-checkbox {
+	max-width: 400px;
+	text-align: left;
+	font-family: 'SUSE', sans-serif;
+}
 .input-container input:focus,
 .input-container select:focus,
 .input-container textarea:focus {
 	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 	transition: all 0.5s ease-in-out;
+}
+input[type='checkbox']:focus {
+	box-shadow: none;
 }
 .input-container input::placeholder,
 .input-container textarea::placeholder {
@@ -835,6 +854,12 @@ footer {
 .about-contact {
 	background-image: url('./assets/aboutbg.jpg');
 }
+.services-contact {
+	background-image: url('./assets/servicescontact.jpg');
+}
+.services-contact p {
+	font-size: 25px;
+}
 
 /*--------------------Services Page-----------------------*/
 .services-hero {
@@ -905,28 +930,89 @@ footer {
 	margin-top: 20px;
 	margin-left: 50px;
 }
-.services-details .service:nth-child(even) .service-details{
+.services-details .service:nth-child(even) .service-details {
 	margin-left: 0px;
 	margin-right: 50px;
 }
-.service-details h1{
+.service-details h1 {
 	margin-bottom: 10px;
 	font-size: 30px;
 }
-.service-details p{
+.service-details p {
 	margin-bottom: 10px;
 	font-size: 17px;
-	font-family: "SUSE",sans-serif;
-	letter-spacing:0.3px
+	font-family: 'SUSE', sans-serif;
+	letter-spacing: 0.3px;
 }
-.service-details h2{
+.service-details h2 {
 	margin: 20px 0 5px;
 	font-size: 20px;
 }
-.service-details p span{
-	font-family: "Syne",sans-serif;
+.service-details p span {
+	font-family: 'Syne', sans-serif;
 	font-weight: 700;
 }
+.contact-popup {
+	display: none;
+	width: 100vw;
+	min-height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 20;
+}
+.contact-popup.show {
+	display: flex;
+}
+.contact-popup.hide {
+	display: none;
+}
+.contact-popup-details {
+	background-color: #fff;
+	padding: 20px;
+	position: relative;
+	border-radius: 10px;
+}
+.close-button {
+	font-size: 35px;
+	position: absolute;
+	top: 10px;
+	right: 0px;
+	border-radius: 50%;
+	color: #fd5526;
+	z-index: 20;
+}
+.contact-popup-details h4 {
+	margin: 10px 0;
+}
+.contact-popup-details .custom-button {
+	width: 100%;
+	font-family: 'SUSE', sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+	padding: 10px;
+}
+.contact-popup-details .contact-form .input-container:nth-child(1) small {
+	color: #fd5526;
+}
+.contact-popup .input-container input,
+.contact-popup .input-container select
+{
+	width: 350px;
+	height: 40px;
+	font-size: 14px;
+}
+.contact-popup .input-checkbox{
+	width: 350px;
+	font-size: 14px;
+}
+.contact-popup .submit-button{
+	width: 350px;
+	height: 40px;
+	font-size: 20px;
+}
+
 @media (max-width: 1024px) {
 	.navbar {
 		padding: 0 2%;
@@ -955,6 +1041,9 @@ footer {
 	.about-hero {
 		padding: 50px 2%;
 	}
+	.about-values {
+		padding: 50px 2% 150px;
+	}
 	.services-hero {
 		padding: 150px 2% 50px;
 	}
@@ -982,6 +1071,7 @@ footer {
 	.nav-logo {
 		height: 45px;
 		padding: 0;
+		z-index: 11;
 	}
 	.nav-burger {
 		display: flex;
@@ -1004,19 +1094,20 @@ footer {
 		height: fit-content;
 		background-color: #000000;
 		position: absolute;
-		top: 90px;
+		top: 0px;
 		z-index: 10;
 		flex-direction: column;
 		left: 0;
 		transition: all 0.5s ease-in-out;
 		overflow: hidden;
+		padding-top: 90px;
 	}
 	.visible {
 		clip-path: circle(100% at 50% 50%);
 	}
 	.hidden {
 		position: absolute;
-		top: 90px;
+		top: 0px;
 		clip-path: circle(0% at 50% 50%);
 	}
 	.nav-link {
@@ -1253,19 +1344,19 @@ footer {
 		margin-top: 20px;
 		margin-left: 0px;
 	}
-	.services-details .service:nth-child(even) .service-details{
+	.services-details .service:nth-child(even) .service-details {
 		margin-left: 0px;
 		margin-right: 0px;
 	}
-	.service-details h1{
+	.service-details h1 {
 		font-size: 25px;
 		text-align: center;
 	}
-	.service-details h2{
+	.service-details h2 {
 		text-align: center;
 		margin: 30px 0 20px;
 	}
-	.service-desc{
+	.service-desc {
 		text-align: center;
 	}
 }
@@ -1300,6 +1391,16 @@ footer {
 	.input-container textarea,
 	.submit-button {
 		width: 350px;
+	}
+	.input-checkbox {
+		max-width: 350px;
+	}
+	input[type='checkbox'] {
+		width: 20px;
+		height: 20px;
+		float: left;
+		margin-right: 5px;
+		accent-color: #fd5526;
 	}
 	.about-values {
 		padding: 50px 5% 100px;

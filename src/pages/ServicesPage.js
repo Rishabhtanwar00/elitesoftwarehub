@@ -2,8 +2,11 @@ import Img1 from '../assets/companyservice.jpg';
 import Img2 from '../assets/websiteservice.jpg';
 import Img3 from '../assets/marketingservice.png';
 import Heading from '../components/Heading';
+import CustomButton from '../components/CustomButton';
+import { useNavigate } from 'react-router-dom';
 
 const ServicesPage = () => {
+	const navigate = useNavigate();
 	return (
 		<section>
 			<div className='services-hero flex'>
@@ -137,6 +140,18 @@ const ServicesPage = () => {
 					</div>
 				</div>
 			</div>
+			<section className='home-contact about-contact services-contact flex-col'>
+				<p>
+					At EliteSoftwarehub, we’re committed to helping you succeed with our
+					comprehensive business solutions. Whether you need help registering
+					your business, building your online presence, or marketing your
+					products, we’re here to support you every step of the way.
+				</p>
+				<CustomButton
+					title='Contact Us'
+					handleClick={() => navigate('/contact-us')}
+				/>
+			</section>
 		</section>
 	);
 };

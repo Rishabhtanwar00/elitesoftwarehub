@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 
-const ContactForm = () => {
+const ContactForm = ({ PopupForm }) => {
 	const {
 		register,
 		handleSubmit,
@@ -11,6 +11,7 @@ const ContactForm = () => {
 		email: { required: 'Email is required' },
 		name: { required: 'Full name is required' },
 		message: { required: 'Message is required' },
+		consent: { required: 'Consent is required' },
 	};
 
 	const onSubmit = async (data) => {
@@ -66,18 +67,32 @@ const ContactForm = () => {
 					<option value='other'>Other</option>
 				</select>
 			</div>
+			{!PopupForm && (
+				<div className='input-container flex-col'>
+					<label>Message</label>
+					<textarea
+						className='form-input'
+						name='message'
+						type='text'
+						placeholder='Enter your message'
+						{...register('message', registerOptions.message)}
+					/>
+					<small className='error'>
+						{errors?.message && errors.message.message}
+					</small>
+				</div>
+			)}
 			<div className='input-container flex-col'>
-				<label>Message</label>
-				<textarea
-					className='form-input'
-					name='message'
-					type='text'
-					placeholder='Enter your message'
-					{...register('message', registerOptions.message)}
-				/>
-				<small className='error'>
-					{errors?.message && errors.message.message}
-				</small>
+				<span className='input-checkbox'>
+					<input type='checkbox' defaultChecked name='consent' />
+					<span>
+						I authorize EliteSoftwarehub and its representatives to Call, SMS,
+						Email or WhatsApp me about its products and offers.
+					</span>
+				</span>
+				{/* <small className='error'>
+					{errors?.consent && errors.consent.message}
+				</small> */}
 			</div>
 			<button className='submit-button' type='submit'>
 				Submit

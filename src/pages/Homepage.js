@@ -1,12 +1,18 @@
 import CustomButton from '../components/CustomButton';
+import ContactPopup from '../components/ContactPopup';
 import Heading from '../components/Heading';
 import TestimonialSlider from '../components/TestimonialSlider';
 import { ServicesData } from '../components/Data';
 import HeroImg from '../assets/hero.png';
 import FeaturesImg from '../assets/featuresimg.png';
 import Circles from '../assets/circles.svg';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Homepage = () => {
+	const [popup, setPopup] = useState(false);
+	const navigate = useNavigate();
+
 	return (
 		<section>
 			<section className='hero-section flex-col'>
@@ -18,11 +24,18 @@ const Homepage = () => {
 					your unique business goals.
 				</p>
 				<div className='flex hero-buttons'>
-					<CustomButton title='Get Started' />
-					<CustomButton title='Contact Us' />
+					<CustomButton
+						title='Request a callback'
+						handleClick={() => setPopup(true)}
+					/>
+					<CustomButton
+						title='Contact Us'
+						handleClick={() => navigate('/contact-us')}
+					/>
 				</div>
 				<img className='hero-img' src={HeroImg} alt='Hero section img' />
 			</section>
+			<ContactPopup popup={popup} setPopup={setPopup} />
 			<section className='home-content'>
 				<section className='home-about'>
 					<Heading title='Who We Are' />
@@ -114,7 +127,10 @@ const Homepage = () => {
 					Contact us now for a free consultation and let’s build a brighter
 					future for your company together.
 				</p>
-				<CustomButton title='Contact Us' />
+				<CustomButton
+					title='Contact Us'
+					handleClick={() => navigate('/contact-us')}
+				/>
 			</section>
 		</section>
 	);
