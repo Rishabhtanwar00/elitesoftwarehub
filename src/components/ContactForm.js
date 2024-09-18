@@ -19,7 +19,14 @@ const ContactForm = ({ PopupForm }) => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit(onSubmit)} className='contact-form flex-col'>
+		<form
+			method='POST'
+			name='contact'
+			action='/success'
+			data-netlify='true'
+			onSubmit={handleSubmit(onSubmit)}
+			className='contact-form flex-col'
+		>
 			<div className='input-container flex-col'>
 				<label>Full Name</label>
 				<input
