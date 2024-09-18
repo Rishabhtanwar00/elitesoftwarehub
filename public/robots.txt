@@ -1,4 +1,4 @@
-Sitemap: https://elitesoftwarehub.com/sitemap_index.xml
+Sitemap: https://www.yourwebsite.com/sitemap.xml
 User-agent: *
 Allow: /
 Disallow: /static/
