@@ -23,7 +23,7 @@ const ContactForm = ({ PopupForm }) => {
 			method='POST'
 			name='contact'
 			action='/success'
-			data-netlify='true'
+			netlify
 			onSubmit={handleSubmit(onSubmit)}
 			className='contact-form flex-col'
 		>
