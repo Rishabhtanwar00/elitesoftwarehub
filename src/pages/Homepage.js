@@ -9,6 +9,7 @@ import TestimonialSlider from '../components/TestimonialSlider';
 import { ServicesData } from '../components/Data';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import SuccessStories from '../components/SuccessStories';
 
 const Homepage = () => {
 	useEffect(() => {
@@ -126,6 +127,7 @@ const Homepage = () => {
 					</div>
 				</div>
 			</section>
+			<SuccessStories />
 			<TestimonialSlider />
 			<section className='home-contact flex-col'>
 				<h1>Ready to take your business to the next level? </h1>

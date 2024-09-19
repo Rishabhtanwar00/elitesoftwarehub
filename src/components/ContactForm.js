@@ -14,39 +14,12 @@ const ContactForm = ({ PopupForm }) => {
 		consent: { required: 'Consent is required' },
 	};
 
-	const onSubmit = async (data, e) => {
-		e.preventDefault(); // Prevent page reload on form submit
-
-		const formData = new FormData(data);
-		const formObject = Object.fromEntries(formData.entries());
-
-		try {
-			const response = await fetch('/', {
-				method: 'POST',
-				body: new URLSearchParams(formObject),
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-			});
-
-			if (response.ok) {
-				alert('Form submitted successfully!');
-				data.reset(); // Clear the form
-			} else {
-				alert('Error submitting form.');
-			}
-		} catch (error) {
-			console.error('Error:', error);
-		}
+	const onSubmit = async (data) => {
+		console.log(data);
 	};
 
 	return (
-		<form
-			method='POST'
-			name='contact'
-			action='/success'
-			netlify
-			onSubmit={handleSubmit(onSubmit)}
-			className='contact-form flex-col'
-		>
+		<form onSubmit={handleSubmit(onSubmit)} className='contact-form flex-col'>
 			<div className='input-container flex-col'>
 				<label>Full Name</label>
 				<input
