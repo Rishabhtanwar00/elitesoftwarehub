@@ -39,8 +39,6 @@ const Navbar = () => {
 	const [navbar, setNavbar] = useState(false);
 
 	const updateMenu = () => {
-
-	
 		if (!isMenuClicked) {
 			setBurgerClass('nav-burger open');
 			setMenuClass('nav-menu visible');
@@ -58,17 +56,22 @@ const Navbar = () => {
 	window.addEventListener('scroll', changeBackgroundColor);
 
 	useGSAP(() => {
-		gsap.to('.nav-logo', {
-			scale: 1,
-			opacity: 1,
-			ease: 'power3.out',
-			duration: 2,
-			delay: 3,
-		});
+		if (sessionStorage.getItem('hasNavAnimationPlayed') !== 'Played') {
+			gsap.to('.nav-logo', {
+				scale: 1,
+				opacity: 1,
+				ease: 'power3.out',
+				duration: 2,
+				delay: 3,
+				onComplete: function () {
+					sessionStorage.setItem('hasNavAnimationPlayed', 'Played');
+				},
+			});
+		}
 	}, [{ scope: container }]);
 
 	return (
-		<nav className={navbar ? 'navbar active' : 'navbar'} ref={container}> 
+		<nav className={navbar ? 'navbar active' : 'navbar'} ref={container}>
 			<Link to='/' className='nav-logo flex'>
 				<img draggable='false' src={EliteSoftwarehub} alt='EliteSoftwarehub' />
 			</Link>

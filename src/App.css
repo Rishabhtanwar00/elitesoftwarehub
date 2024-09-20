@@ -1237,151 +1237,6 @@ input[type='checkbox']:focus {
 		width: 100%;
 	}
 }
-@keyframes backgroundChange {
-	0% {
-		background-color: #000;
-	}
-	70% {
-		background-color: #000;
-	}
-	100% {
-		background-color: transparent;
-	}
-}
-@keyframes move {
-	0% {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		filter: none;
-	}
-	10% {
-		filter: drop-shadow(10px 10px 100px #fd5526);
-	}
-	20% {
-		filter: drop-shadow(10px 10px 50px #fd5526;);
-	}
-	30% {
-		filter: drop-shadow(10px 10px 75px #fd5526);
-	}
-	40% {
-		filter: drop-shadow(10px 10px 100px #fd5526);
-	}
-	50% {
-		filter: drop-shadow(10px 10px 75px #fd5526);
-	}
-	60% {
-		filter: drop-shadow(10px 10px 100px #fd5526);
-	}
-	70% {
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		/* filter: none;
-		height: 80px;
-		max-width: 500px; */
-	}
-	100% {
-		/* top: 25px;
-		left: 9%;
-		transform: none;
-		height: 50px;
-		max-width: 400px; */
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-}
-@media (max-width: 1024px) {
-	@keyframes move {
-		0% {
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			filter: none;
-		}
-		10% {
-			filter: drop-shadow(10px 10px 100px #fd5526);
-		}
-		20% {
-			filter: drop-shadow(10px 10px 50px #fd5526;);
-		}
-		30% {
-			filter: drop-shadow(10px 10px 75px #fd5526);
-		}
-		40% {
-			filter: drop-shadow(10px 10px 100px #fd5526);
-		}
-		50% {
-			filter: drop-shadow(10px 10px 75px #fd5526);
-		}
-		60% {
-			filter: drop-shadow(10px 10px 100px #fd5526);
-		}
-		70% {
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			filter: none;
-			height: 80px;
-			max-width: 500px;
-		}
-		100% {
-			top: 25px;
-			left: 2%;
-			transform: none;
-			height: 50px;
-			max-width: 400px;
-		}
-	}
-}
-@media (max-width: 768px) {
-	.loader img {
-		height: 60px;
-		max-width: 500px;
-	}
-	@keyframes move {
-		0% {
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			filter: none;
-		}
-		10% {
-			filter: drop-shadow(10px 10px 100px #fd5526);
-		}
-		20% {
-			filter: drop-shadow(10px 10px 50px #fd5526;);
-		}
-		30% {
-			filter: drop-shadow(10px 10px 75px #fd5526);
-		}
-		40% {
-			filter: drop-shadow(10px 10px 100px #fd5526);
-		}
-		50% {
-			filter: drop-shadow(10px 10px 75px #fd5526);
-		}
-		60% {
-			filter: drop-shadow(10px 10px 100px #fd5526);
-		}
-		70% {
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			filter: none;
-			height: 60px;
-			max-width: 500px;
-		}
-		100% {
-			top: 25px;
-			left: 5%;
-			transform: none;
-			height: 50px;
-			max-width: 400px;
-		}
-	}
-}
 
 @media (max-width: 1024px) {
 	.navbar,
@@ -1882,5 +1737,15 @@ input[type='checkbox']:focus {
 	.about-value {
 		width: 100%;
 		height: fit-content;
+	}
+	.loader img {
+		height: 50px;
+		max-width: 400px;
+	}
+	.loader-num {
+		bottom: 15vh;
+	}
+	.loader-bar {
+		bottom: 10vh;
 	}
 }
