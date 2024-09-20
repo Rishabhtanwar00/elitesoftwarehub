@@ -23,9 +23,10 @@ const Homepage = () => {
 	gsap.registerPlugin(ScrollTrigger);
 	const handleClickPopup = contextSafe(() => {
 		gsap.to('.contact-popup', {
-			'clip-path': 'circle(100% at 50% 50%)',
+			scale:1,
+			// 'clip-path': 'circle(100% at 50% 50%)',
 			ease: 'power3.out',
-			duration: 3,
+			duration: 1,
 		});
 	});
 

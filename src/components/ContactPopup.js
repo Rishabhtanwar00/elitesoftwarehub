@@ -11,8 +11,7 @@ const ContactPopup = ({container}) => {
 	const handleClickPopup = contextSafe(() => {
 		gsap.to('.contact-popup', {
 			// translateX:'100vw',
-			// scale:0,
-			'clip-path': 'circle(0% at 50% 50%)',
+			scale:0,			
 			ease: 'power3.out',
 			duration: 1,
 		});

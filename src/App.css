@@ -1096,7 +1096,7 @@ input[type='checkbox']:focus {
 }
 .contact-popup {
 	display: flex;
-	/* transform: scale(0); */
+	transform: scale(0);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -1104,7 +1104,7 @@ input[type='checkbox']:focus {
 	width: 100vw;
 	height: 100vh;
 	background-color: rgba(0, 0, 0, 0.5);
-	clip-path: circle(0% at 50% 50%);
+	/* clip-path: circle(0% at 50% 50%); */
 }
 .contact-popup.show {
 	/* clip-path: circle(100% at 50% 50%); */
