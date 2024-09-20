@@ -4,21 +4,27 @@ import Loader from './components/Loader';
 import Navbar from './components/Navbar';
 import RoutesContainer from './components/RoutesContainer';
 import Footer from './components/Footer';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 function App() {
-	const [loading, setLoading] = useState(false);
+	// const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
-		setLoading(true);
-		const timer = setTimeout(() => setLoading(false), 4000);
-		return () => clearTimeout(timer);
+		sessionStorage.setItem('hasMyAnimationPlayed', 'Not Played');
+		// setLoading(true);
+		// const timer = setTimeout(() => setLoading(true), 4000);
+		// return () => clearTimeout(timer);
+		const body = document.querySelector('body');
+		setTimeout(function () {
+			body.style.overflowY = 'visible';
+		}, 3000);
 	}, []);
 
 	return (
 		<div className='App'>
 			<Router>
-				{loading && <Loader />}
+				{/* {loading && <Loader />} */}
+				<Loader />
 				<Navbar />
 				<RoutesContainer />
 				<Footer />

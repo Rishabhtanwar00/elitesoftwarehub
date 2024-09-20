@@ -1,29 +1,23 @@
-import { useEffect, useState } from 'react';
 import ContactForm from './ContactForm';
 import CustomButton from './CustomButton';
 import { IoCloseCircleSharp } from 'react-icons/io5';
+import gsap from 'gsap';
 
-const ContactPopup = ({ popup, setPopup }) => {
-	const [close, setClose] = useState(false);
-
-	useEffect(() => {
-		setClose(popup);
-	}, [popup]);
+const ContactPopup = ({ contextSafe }) => {
+	const handleClickPopup = contextSafe(() => {
+		gsap.to('.contact-popup', {
+			// translateX:'100vw',
+			// scale:0,
+			'clip-path': 'circle(0% at 50% 50%)',
+			ease: 'power3.out',
+			duration: 1,
+		});
+	});
 
 	return (
-		<section
-			className={
-				!close ? 'contact-popup flex hide' : 'contact-popup flex show'
-			}
-		>
+		<section className='contact-popup flex'>
 			<div className='contact-popup-details flex-col'>
-				<button
-					className='close-button'
-					onClick={() => {
-						setClose(!close);
-						setPopup(false);
-					}}
-				>
+				<button className='close-button' onClick={handleClickPopup}>
 					<i>
 						<IoCloseCircleSharp />
 					</i>

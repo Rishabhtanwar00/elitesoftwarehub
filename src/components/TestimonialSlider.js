@@ -1,7 +1,8 @@
 import { FaQuoteLeft } from 'react-icons/fa';
 import { useEffect, useRef, useState } from 'react';
 import { testimonialsData } from './Data';
-
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const TestimonialSlider = () => {
 	const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,28 +20,39 @@ const TestimonialSlider = () => {
 	// Function to reset the interval
 	const resetInterval = () => {
 		clearInterval(intervalRef.current);
-		startInterval(); 
+		startInterval();
 	};
 
 	// Handle dot click
 	const handleDotClick = (index) => {
-		setCurrentIndex(index); 
+		setCurrentIndex(index);
 		resetInterval();
 	};
 
 	useEffect(() => {
-		startInterval(); 
+		startInterval();
 
 		return () => {
 			clearInterval(intervalRef.current); // Clear the interval on component unmount
 		};
 	}, []);
 
+	useGSAP(
+		() => {
+			gsap.to('.home-testimonials', {
+				translateX: `-${currentIndex * 100}vw`,
+				duration: 1.5,
+				ease: 'power3.inOut',
+			});
+		},
+		{ dependencies: [currentIndex] }
+	);
+
 	return (
 		<section className='home-testimonials-section'>
 			<div
 				className='home-testimonials'
-				style={{ transform: `translateX(-${currentIndex * 100}vw)` }}
+				// style={{ transform: `translateX(-${currentIndex * 100}vw)` }}
 			>
 				{testimonialsData.map((testimonial) => (
 					<div className='home-testimonial flex' key={testimonial.id}>

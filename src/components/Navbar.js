@@ -1,6 +1,8 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import EliteSoftwarehub from '../assets/elitegen.png';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
 
 const navlinks = [
 	{
@@ -26,6 +28,10 @@ const navlinks = [
 ];
 
 const Navbar = () => {
+	const container = useRef();
+
+	// const { contextSafe } = useGSAP({ scope: container });
+
 	const { pathname } = useLocation();
 	const [burgerClass, setBurgerClass] = useState('nav-burger');
 	const [menu_class, setMenuClass] = useState('menu hidden');
@@ -33,6 +39,8 @@ const Navbar = () => {
 	const [navbar, setNavbar] = useState(false);
 
 	const updateMenu = () => {
+
+	
 		if (!isMenuClicked) {
 			setBurgerClass('nav-burger open');
 			setMenuClass('nav-menu visible');
@@ -49,8 +57,18 @@ const Navbar = () => {
 
 	window.addEventListener('scroll', changeBackgroundColor);
 
+	useGSAP(() => {
+		gsap.to('.nav-logo', {
+			scale: 1,
+			opacity: 1,
+			ease: 'power3.out',
+			duration: 2,
+			delay: 3,
+		});
+	}, [{ scope: container }]);
+
 	return (
-		<nav className={navbar ? 'navbar active' : 'navbar'}>
+		<nav className={navbar ? 'navbar active' : 'navbar'} ref={container}> 
 			<Link to='/' className='nav-logo flex'>
 				<img draggable='false' src={EliteSoftwarehub} alt='EliteSoftwarehub' />
 			</Link>

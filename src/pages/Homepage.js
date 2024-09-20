@@ -8,23 +8,232 @@ import Heading from '../components/Heading';
 import TestimonialSlider from '../components/TestimonialSlider';
 import { ServicesData } from '../components/Data';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import SuccessStories from '../components/SuccessStories';
+import { useGSAP } from '@gsap/react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/all';
 
 const Homepage = () => {
+	const container = useRef();
+
+	const { contextSafe } = useGSAP({ scope: container });
+	gsap.registerPlugin(ScrollTrigger);
+	const handleClickPopup = contextSafe(() => {
+		gsap.to('.contact-popup', {
+			'clip-path': 'circle(100% at 50% 50%)',
+			ease: 'power3.out',
+			duration: 3,
+		});
+	});
+
+	useGSAP(
+		() => {
+			window.scrollTo(0, 0);
+			if (sessionStorage.getItem('hasMyAnimationPlayed') !== 'Played') {
+				gsap.fromTo(
+					'.hero-title',
+					{
+						translateY: '-400px',
+						opacity: 0,
+					},
+					{
+						translateY: '0',
+						opacity: 1,
+						ease: 'power3.out',
+						duration: 1.8,
+						delay: 3.2,
+					}
+				);
+				gsap.fromTo(
+					'.hero-desc',
+					{
+						translateY: '-400px',
+						opacity: 0,
+					},
+					{
+						translateY: '0',
+						opacity: 1,
+						ease: 'power3.out',
+						duration: 1.9,
+						delay: 3.1,
+					}
+				);
+				gsap.fromTo(
+					'.hero-buttons',
+					{
+						translateY: '-400px',
+						opacity: 0,
+					},
+					{
+						translateY: 0,
+						opacity: 1,
+						ease: 'power3.out',
+						duration: 2,
+						delay: 3,
+					}
+				);
+				gsap.fromTo(
+					'.hero-img',
+					{
+						translateX: '100vw',
+					},
+					{
+						translateX: '0',
+						ease: 'power3.out',
+						duration: 2,
+						delay: 3,
+						onComplete: function () {
+							sessionStorage.setItem('hasMyAnimationPlayed', 'Played');
+						},
+					}
+				);
+			}
+		},
+		{ scope: container }
+	);
+	const timeline = gsap.timeline(
+		{
+			scrollTrigger: {
+				trigger: 'home-content',
+				start: '23% center',
+				end: '32% center',
+				markers: true,
+				scrub: 1,
+			},
+		},
+		{ scope: container }
+	);
+	const timeline2 = gsap.timeline(
+		{
+			scrollTrigger: {
+				trigger: 'home-features',
+				start: '35% center',
+				end: '42% center',
+				markers: true,
+				scrub: 1,
+			},
+		},
+		{ scope: container }
+	);
+
+	const timeline3 = gsap.timeline(
+		{
+			scrollTrigger: {
+				trigger: 'success-stories',
+				start: '50% center',
+				end: '65% center',
+				markers: true,
+				scrub: 1,
+			},
+		},
+		{ scope: container }
+	);
+
+	useGSAP(() => {
+		timeline.fromTo(
+			'.home-service-card',
+			{
+				y: '200px',
+			},
+			{
+				y: 0,
+				ease: 'power3.out',
+				stagger: 0.03,
+				// duration: 3,
+			}
+		);
+		timeline2.fromTo(
+			'.home-feature',
+			{
+				x: '50%',
+				opacity: 0,
+			},
+			{
+				x: 0,
+				opacity: 1,
+				ease: 'power3.out',
+				stagger: 0.03,
+				// duration: 3,
+			},
+			'features'
+		);
+		timeline2.fromTo(
+			'.home-feature-right',
+			{
+				x: '-50%',
+				opacity: 0,
+			},
+			{
+				x: 0,
+				opacity: 1,
+				ease: 'power3.out',
+				stagger: 0.03,
+				// duration: 3,
+			},
+			'features'
+		);
+		timeline3
+			.fromTo(
+				'.success-story1',
+				{
+					x: '-550px',
+				},
+				{
+					x: 0,
+
+					ease: 'power3.out',
+				}
+			)
+			.fromTo(
+				'.success-story3',
+				{
+					y: '-500px',
+				},
+				{
+					y: 0,
+					ease: 'power3.out',
+				}
+			)
+			.fromTo(
+				'.success-story3',
+				{
+					x: '-550px',
+				},
+				{
+					x: 0,
+					ease: 'power3.out',
+				},
+				'story'
+			)
+			.fromTo(
+				'.success-story2',
+				{
+					y: '-500px',
+				},
+				{
+					y: 0,
+
+					ease: 'power3.out',
+				},
+				'story'
+			);
+	});
+
 	useEffect(() => {
 		window.scroll(0, 0);
 	}, []);
 	DocumentTitle('EliteSoftwarehub');
 
-	const [popup, setPopup] = useState(false);
 	const navigate = useNavigate();
 
 	return (
-		<section>
+		<section ref={container}>
 			<section className='hero-section flex-col'>
-				<h1>EliteSoftwarehub, Your All-in-One Business Solution Partner.</h1>
-				<p>
+				<h1 className='hero-title'>
+					EliteSoftwarehub, Your All-in-One Business Solution Partner.
+				</h1>
+				<p className='hero-desc'>
 					We offer everything you need to start, grow, and thrive in the modern
 					business world. From company registration to website development and
 					digital marketing, we provide comprehensive services tailored to meet
@@ -33,7 +242,7 @@ const Homepage = () => {
 				<div className='flex hero-buttons'>
 					<CustomButton
 						title='Request a callback'
-						handleClick={() => setPopup(true)}
+						handleClick={handleClickPopup}
 					/>
 					<CustomButton
 						title='Contact Us'
@@ -42,7 +251,7 @@ const Homepage = () => {
 				</div>
 				<img className='hero-img' src={HeroImg} alt='Hero section img' />
 			</section>
-			<ContactPopup popup={popup} setPopup={setPopup} />
+			<ContactPopup contextSafe={contextSafe} />
 			<section className='home-content'>
 				<section className='home-about'>
 					<Heading title='Who We Are' />
@@ -110,14 +319,14 @@ const Homepage = () => {
 						<img src={FeaturesImg} alt='Why choose us img' />
 					</div>
 					<div className='home-features-right flex-col'>
-						<div className='home-feature'>
+						<div className='home-feature home-feature-right'>
 							<h1>Customer-Centric Approach</h1>
 							<p>
 								We tailor our solutions to meet your specific business needs,
 								ensuring maximum efficiency and satisfaction.
 							</p>
 						</div>
-						<div className='home-feature'>
+						<div className='home-feature home-feature-right'>
 							<h1>Proven Track Record</h1>
 							<p>
 								Many businesses have trusted us to turn their ideas into
@@ -127,7 +336,7 @@ const Homepage = () => {
 					</div>
 				</div>
 			</section>
-			<SuccessStories />
+			<SuccessStories timeline={timeline3} />
 			<TestimonialSlider />
 			<section className='home-contact flex-col'>
 				<h1>Ready to take your business to the next level? </h1>

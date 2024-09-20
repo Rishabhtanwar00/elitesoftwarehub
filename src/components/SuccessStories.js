@@ -3,7 +3,8 @@ import Img2 from '../assets/success2.jpg';
 import Img3 from '../assets/success3.jpg';
 import Img4 from '../assets/success.jpg';
 
-const SuccessStories = () => {
+const SuccessStories = ({timeline}) => {
+
 	return (
 		<section className='success-stories flex-col'>
 			<div className='flex success-story-top'>
@@ -15,7 +16,7 @@ const SuccessStories = () => {
 					onClick={() =>
 						window.open('https://kraduae.com', '_blank', 'noreferrer')
 					}
-					className='success-story'
+					className='success-story success-story1'
 				>
 					<img src={Img1} alt='Success Story Img' />
 					<span className='flex'>Krad Global General Trading</span>
@@ -23,7 +24,7 @@ const SuccessStories = () => {
 			</div>
 			<div className='flex success-story-bottom'>
 				<div
-					className='success-story'
+					className='success-story success-story2'
 					onClick={() =>
 						window.open('https://twilearn.in', '_blank', 'noreferrer')
 					}
@@ -32,7 +33,7 @@ const SuccessStories = () => {
 					<span className='flex'>Twilearn</span>
 				</div>
 				<div
-					className='success-story'
+					className='success-story success-story3'
 					onClick={() =>
 						window.open('https://primefileadvisors.com', '_blank', 'noreferrer')
 					}
