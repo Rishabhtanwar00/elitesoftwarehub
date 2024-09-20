@@ -1338,6 +1338,7 @@ input[type='checkbox']:focus {
 		height: 45px;
 		padding: 0;
 		z-index: 11;
+		transform: scale(0.5);
 	}
 	.nav-burger {
 		display: flex;
