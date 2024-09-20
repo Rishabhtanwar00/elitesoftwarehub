@@ -2,8 +2,12 @@ import ContactForm from './ContactForm';
 import CustomButton from './CustomButton';
 import { IoCloseCircleSharp } from 'react-icons/io5';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { useRef } from 'react';
 
-const ContactPopup = ({ contextSafe }) => {
+const ContactPopup = () => {
+	const container = useRef();
+	const { contextSafe } = useGSAP({ scope: container });
 	const handleClickPopup = contextSafe(() => {
 		gsap.to('.contact-popup', {
 			// translateX:'100vw',
@@ -15,7 +19,7 @@ const ContactPopup = ({ contextSafe }) => {
 	});
 
 	return (
-		<section className='contact-popup flex'>
+		<section className='contact-popup flex' ref={container}>
 			<div className='contact-popup-details flex-col'>
 				<button className='close-button' onClick={handleClickPopup}>
 					<i>

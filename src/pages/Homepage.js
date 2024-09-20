@@ -260,7 +260,7 @@ const Homepage = () => {
 				</div>
 				<img className='hero-img' src={HeroImg} alt='Hero section img' />
 			</section>
-			<ContactPopup contextSafe={contextSafe} />
+			<ContactPopup />
 			<section className='home-content'>
 				<section className='home-about'>
 					<Heading title='Who We Are' />
