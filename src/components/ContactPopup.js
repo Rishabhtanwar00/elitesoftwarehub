@@ -3,10 +3,10 @@ import CustomButton from './CustomButton';
 import { IoCloseCircleSharp } from 'react-icons/io5';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
-import { useRef } from 'react';
+// import { useRef } from 'react';
 
-const ContactPopup = () => {
-	const container = useRef();
+const ContactPopup = ({container}) => {
+	// const container = useRef();
 	const { contextSafe } = useGSAP({ scope: container });
 	const handleClickPopup = contextSafe(() => {
 		gsap.to('.contact-popup', {
