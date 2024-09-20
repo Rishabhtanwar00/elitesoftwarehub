@@ -4,12 +4,17 @@ import gsap from 'gsap';
 
 const Loader = () => {
 	useGSAP(() => {
-		gsap.to('.loader', {
-			translateX: '100vw',
-			duration: 1,
-			ease: 'power3.out',
-			delay: 3,
-		});
+		gsap
+			.to('.loader', {
+				translateX: '100vw',
+				duration: 1,
+				ease: 'power3.out',
+				delay: 3,
+			})
+			gsap.to('.loader', {
+				display: 'none',
+				delay: 4,
+			});
 	});
 
 	return (

@@ -1169,7 +1169,7 @@ input[type='checkbox']:focus {
 	align-items: center;
 	z-index: 9999;
 	width: 100vw;
-	height: 100vh;	
+	height: 100vh;
 	/* animation: backgroundChange 3.9s ease-in-out forwards; */
 }
 .loader img {
@@ -1179,9 +1179,9 @@ input[type='checkbox']:focus {
 	/* position: absolute;
 	transform: translate(-50%, -50%); */
 }
-.loader-num{
+.loader-num {
 	overflow: hidden;
-	height:50px;
+	height: 50px;
 	width: fit-content;
 	font-size: 20px;
 	font-weight: 800;
@@ -1189,12 +1189,12 @@ input[type='checkbox']:focus {
 	bottom: 30px;
 	left: 20px;
 	color: #fd5526;
-	font-family: "SUSE";
+	font-family: 'SUSE';
 }
-.loader-num h1{
+.loader-num h1 {
 	animation: numChange 3.3s ease-in-out forwards;
 }
-.loader-bar{
+.loader-bar {
 	position: absolute;
 	height: 5px;
 	background-color: #fd5526;
@@ -1204,36 +1204,36 @@ input[type='checkbox']:focus {
 	animation: widthChange 3.3s ease-in-out forwards;
 }
 @keyframes numChange {
-	0%{
+	0% {
 		transform: translateY(0px);
 	}
-	25%{
+	25% {
 		transform: translateY(-50px);
 	}
-	50%{
+	50% {
 		transform: translateY(-100px);
 	}
-	75%{
+	75% {
 		transform: translateY(-150px);
 	}
-	100%{
+	100% {
 		transform: translateY(-200px);
 	}
 }
 @keyframes widthChange {
-	0%{
+	0% {
 		width: 20%;
 	}
-	25%{
+	25% {
 		width: 40%;
 	}
-	50%{
+	50% {
 		width: 70%;
 	}
-	75%{
+	75% {
 		width: 90%;
 	}
-	100%{
+	100% {
 		width: 100%;
 	}
 }

@@ -3,8 +3,7 @@ import Img2 from '../assets/success2.jpg';
 import Img3 from '../assets/success3.jpg';
 import Img4 from '../assets/success.jpg';
 
-const SuccessStories = ({timeline}) => {
-
+const SuccessStories = () => {
 	return (
 		<section className='success-stories flex-col'>
 			<div className='flex success-story-top'>

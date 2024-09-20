@@ -13,8 +13,10 @@ import SuccessStories from '../components/SuccessStories';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
+import useWindowDimensions from '../components/useWindowDimensions';
 
 const Homepage = () => {
+	const { width } = useWindowDimensions();
 	const container = useRef();
 
 	const { contextSafe } = useGSAP({ scope: container });
@@ -98,8 +100,8 @@ const Homepage = () => {
 				trigger: 'home-content',
 				start: '23% center',
 				end: '32% center',
-				markers: true,
-				scrub: 1,
+				// markers: true,
+				// scrub: 1,
 			},
 		},
 		{ scope: container }
@@ -110,8 +112,8 @@ const Homepage = () => {
 				trigger: 'home-features',
 				start: '35% center',
 				end: '42% center',
-				markers: true,
-				scrub: 1,
+				// markers: true,
+				// scrub: 1,
 			},
 		},
 		{ scope: container }
@@ -123,101 +125,105 @@ const Homepage = () => {
 				trigger: 'success-stories',
 				start: '50% center',
 				end: '65% center',
-				markers: true,
-				scrub: 1,
+				// markers: true,
+				// scrub: 1,
 			},
 		},
 		{ scope: container }
 	);
 
 	useGSAP(() => {
-		timeline.fromTo(
-			'.home-service-card',
-			{
-				y: '200px',
-			},
-			{
-				y: 0,
-				ease: 'power3.out',
-				stagger: 0.03,
-				// duration: 3,
-			}
-		);
-		timeline2.fromTo(
-			'.home-feature',
-			{
-				x: '50%',
-				opacity: 0,
-			},
-			{
-				x: 0,
-				opacity: 1,
-				ease: 'power3.out',
-				stagger: 0.03,
-				// duration: 3,
-			},
-			'features'
-		);
-		timeline2.fromTo(
-			'.home-feature-right',
-			{
-				x: '-50%',
-				opacity: 0,
-			},
-			{
-				x: 0,
-				opacity: 1,
-				ease: 'power3.out',
-				stagger: 0.03,
-				// duration: 3,
-			},
-			'features'
-		);
-		timeline3
-			.fromTo(
-				'.success-story1',
+		width > 768 &&
+			timeline.fromTo(
+				'.home-service-card',
 				{
-					x: '-550px',
-				},
-				{
-					x: 0,
-
-					ease: 'power3.out',
-				}
-			)
-			.fromTo(
-				'.success-story3',
-				{
-					y: '-500px',
+					y: '200px',
 				},
 				{
 					y: 0,
 					ease: 'power3.out',
+					stagger: 0.03,
+					// duration: 3,
 				}
-			)
-			.fromTo(
-				'.success-story3',
-				{
-					x: '-550px',
-				},
-				{
-					x: 0,
-					ease: 'power3.out',
-				},
-				'story'
-			)
-			.fromTo(
-				'.success-story2',
-				{
-					y: '-500px',
-				},
-				{
-					y: 0,
-
-					ease: 'power3.out',
-				},
-				'story'
 			);
+		width > 768 &&
+			timeline2
+				.fromTo(
+					'.home-feature',
+					{
+						x: '50%',
+						opacity: 0,
+					},
+					{
+						x: 0,
+						opacity: 1,
+						ease: 'power3.out',
+						stagger: 0.03,
+						// duration: 3,
+					},
+					'features'
+				)
+				.fromTo(
+					'.home-feature-right',
+					{
+						x: '-50%',
+						opacity: 0,
+					},
+					{
+						x: 0,
+						opacity: 1,
+						ease: 'power3.out',
+						stagger: 0.03,
+						// duration: 3,
+					},
+					'features'
+				);
+		width > 768 &&
+			timeline3
+				.fromTo(
+					'.success-story1',
+					{
+						x: '-550px',
+					},
+					{
+						x: 0,
+
+						ease: 'power3.out',
+					}
+				)
+				.fromTo(
+					'.success-story3',
+					{
+						y: '-500px',
+					},
+					{
+						y: 0,
+						ease: 'power3.out',
+					}
+				)
+				.fromTo(
+					'.success-story3',
+					{
+						x: '-550px',
+					},
+					{
+						x: 0,
+						ease: 'power3.out',
+					},
+					'story'
+				)
+				.fromTo(
+					'.success-story2',
+					{
+						y: '-500px',
+					},
+					{
+						y: 0,
+
+						ease: 'power3.out',
+					},
+					'story'
+				);
 	});
 
 	useEffect(() => {
@@ -229,7 +235,10 @@ const Homepage = () => {
 
 	return (
 		<section ref={container}>
-			<section className='hero-section flex-col'>
+			<section
+				className='hero-section flex-col'
+				style={{ overflowX: 'hidden' }}
+			>
 				<h1 className='hero-title'>
 					EliteSoftwarehub, Your All-in-One Business Solution Partner.
 				</h1>
