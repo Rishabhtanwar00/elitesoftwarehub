@@ -57,7 +57,13 @@ const Navbar = () => {
 
 	useGSAP(() => {
 		if (sessionStorage.getItem('hasNavAnimationPlayed') !== 'Played') {
-			gsap.to('.nav-logo', {
+		gsap.fromTo(
+			'.nav-logo',
+			{
+				scale: 3,
+				opacity: 0,
+			},
+			{
 				scale: 1,
 				opacity: 1,
 				ease: 'power3.out',
@@ -66,7 +72,8 @@ const Navbar = () => {
 				onComplete: function () {
 					sessionStorage.setItem('hasNavAnimationPlayed', 'Played');
 				},
-			});
+			}
+		);
 		}
 	}, [{ scope: container }]);
 
