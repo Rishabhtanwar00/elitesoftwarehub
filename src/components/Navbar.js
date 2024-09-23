@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import EliteSoftwarehub from '../assets/elitegen.png';
-import { useGSAP } from '@gsap/react';
-import gsap from 'gsap';
+// import { useGSAP } from '@gsap/react';
+// import gsap from 'gsap';
 
 const navlinks = [
 	{
@@ -55,27 +55,27 @@ const Navbar = () => {
 
 	window.addEventListener('scroll', changeBackgroundColor);
 
-	useGSAP(() => {
-		if (sessionStorage.getItem('hasNavAnimationPlayed') !== 'Played') {
-		gsap.fromTo(
-			'.nav-logo',
-			{
-				scale: 3,
-				opacity: 0,
-			},
-			{
-				scale: 1,
-				opacity: 1,
-				ease: 'power3.out',
-				duration: 2,
-				delay: 3,
-				onComplete: function () {
-					sessionStorage.setItem('hasNavAnimationPlayed', 'Played');
-				},
-			}
-		);
-		}
-	}, [{ scope: container }]);
+	// useGSAP(() => {
+	// 	if (sessionStorage.getItem('hasNavAnimationPlayed') !== 'Played') {
+	// 	gsap.fromTo(
+	// 		'.nav-logo',
+	// 		{
+	// 			scale: 3,
+	// 			opacity: 0,
+	// 		},
+	// 		{
+	// 			scale: 1,
+	// 			opacity: 1,
+	// 			ease: 'power3.out',
+	// 			duration: 2,
+	// 			delay: 3,
+	// 			onComplete: function () {
+	// 				sessionStorage.setItem('hasNavAnimationPlayed', 'Played');
+	// 			},
+	// 		}
+	// 	);
+	// 	}
+	// }, [{ scope: container }]);
 
 	return (
 		<nav className={navbar ? 'navbar active' : 'navbar'} ref={container}>

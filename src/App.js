@@ -11,7 +11,7 @@ function App() {
 
 	useEffect(() => {
 		sessionStorage.setItem('hasMyAnimationPlayed', 'Not Played');
-		sessionStorage.setItem('hasNavAnimationPlayed', 'Not Played');
+		// sessionStorage.setItem('hasNavAnimationPlayed', 'Not Played');
 		// setLoading(true);
 		// const timer = setTimeout(() => setLoading(true), 4000);
 		// return () => clearTimeout(timer);
